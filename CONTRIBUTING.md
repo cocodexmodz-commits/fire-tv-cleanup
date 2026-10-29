@@ -51,9 +51,20 @@ brand-specific knowledge in `examples/`.
 `tools/tv.py` and `tools/b64push.py` exist because the stock `adb` is blocked on recent macOS. If
 you find a cleaner workaround, open an issue first.
 
+## Tests
+
+`tests/` checks the Python tools, `disable.sh`/`restore.sh` and every `examples/*/debloat.txt`
+(valid package names, no duplicates, nothing that would leave the TV without a home screen,
+settings or keyboard). It needs only Python 3 and bash, no TV:
+
+```bash
+python3 -m unittest discover -s tests
+```
+
 ## Pull requests
 
 - One topic per PR. Small is fine.
+- Run the tests before opening it.
 - Say which TV you tested on.
 - No new dependencies in the launcher without discussing it in an issue.
 - Be kind in reviews. Most contributors here are doing this for their parents.

@@ -16,7 +16,8 @@ CHUNK = 48 * 1024  # raw bytes per shell command (base64 grows it by 4/3)
 
 def main():
     local, remote = sys.argv[1], sys.argv[2]
-    data = open(local, "rb").read()
+    with open(local, "rb") as f:
+        data = f.read()
     want = hashlib.md5(data).hexdigest()
     dev = tv.connect()
     tmp = remote + ".b64"
